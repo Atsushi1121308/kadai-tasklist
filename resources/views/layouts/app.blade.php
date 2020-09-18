@@ -13,6 +13,7 @@
         
         {{-- この @yield('content')の部分に，他ファイルで@section('content') ... @endsectionで挟まれた部分が入れ込められる --}}
         <div class="container">
+            @include('common.error_messages')
             @yield('content')
         </div>
 
