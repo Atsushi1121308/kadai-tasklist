@@ -42,16 +42,27 @@ class TasksController extends Controller
 
     public function show($id)
     {
-
         $task = Task::findOrFail($id);
-        return view('tasks.show', ['task' => $task,]);
+        if (\Auth::id() === $task->user_id) { 
+            return view('tasks.show', ['task' => $task,]);
+        }
+        else{
+            // トップページへリダイレクトさせる
+            return redirect('/');
+        }
     }
 
 
     public function edit($id)
     {
         $task = Task::findOrFail($id);
-        return view('tasks.edit', ['task' => $task,]);
+        if (\Auth::id() === $task->user_id) { 
+            return view('tasks.edit', ['task' => $task,]);
+        }
+        else{
+            // トップページへリダイレクトさせる
+            return redirect('/');   
+        }
     }
 
 
