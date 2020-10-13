@@ -87,5 +87,9 @@ class TasksController extends Controller
             $task->delete();
             return redirect('/');
         }
+        else{
+            // トップページへリダイレクトさせる
+            return redirect('/');   
+        }
     }
 }
